@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expiration-deply
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: expiration
+  template:
+    metadata:
+      labels:
+        app: expiration
+    spec:
+      containers:
+        - name: expiration
+          #image: us.gcr.io/ticketing-dev-403319/expiration
+          image: srnsatya/expiration
+          env:
+            - name: REDIS_HOST
+              value: expiration-redis-srv
+            - name: NAT_URI
+              value: 'http://nats-srv:4222'
+            - name: NAT_CLUSTERID
+              value: 'ticketing'
+            - name: NAT_CLIENTID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
