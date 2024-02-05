@@ -8,7 +8,7 @@ import { TicketUpdatedListener } from './events/listeners/ticket-updated-listene
 import { ExpirationCompletedListener } from './events/listeners/expiration-completed-listener';
 import { PaymentCompletedListener } from './events/listeners/payment-completed-listener';
 const start =async () => {
-
+	console.log('starting order service...')
 	
 	// during start up it will check the secrete is created or not
 	if(!process.env.JWT_KEY){
