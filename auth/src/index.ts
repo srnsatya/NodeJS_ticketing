@@ -4,7 +4,7 @@ import { app } from './app';
 import { BadRequestError } from '@myticketingdev/common'
 
 const start =async () => {
-
+	console.log('Starting up.....')
 	// during start up it will check the secrete is created or not
 	if(!process.env.JWT_KEY){
 		throw new BadRequestError('JWT_KEY not found!!')
